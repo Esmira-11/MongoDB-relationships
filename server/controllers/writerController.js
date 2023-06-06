@@ -1,10 +1,12 @@
 const { Book } = require('../models/Book.js');
 const { Writer } = require('../models/Writer.js');
+// const {Country} = require('../models/Country.js')
 
 const writerController = {
     getAll: (req, res) => {
 
         Writer.find()
+            .populate("country")
             .then(data => {
                 res.json(data);
             })

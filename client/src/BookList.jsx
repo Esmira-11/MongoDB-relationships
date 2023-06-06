@@ -24,9 +24,12 @@ function BookList() {
     <table>
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Name</th>
+                <th>Description</th>
                 <th>PublishDate</th>
+                <th>Writer</th>
+                <th>Country</th>
+                <th>Writer Birthdate</th>
                 <th>AddDate</th>
             </tr>
         </thead>
@@ -35,9 +38,12 @@ function BookList() {
                 books.map((item,index) => {
                     return (
                         <tr key={index}>
-                            <td>{item.id}</td>
                             <td>{item.name}</td>
+                            <td>{item.description}</td>
                             <td>{item.publishDate}</td>
+                            <td>{item.writer.firstName} {item.writer.lastName} </td>
+                            <td>{item.writer.country.name}</td>
+                            <td>{item.writer.birthDate}</td>
                             <td>{item.addDate}</td>
                         </tr>
                     )

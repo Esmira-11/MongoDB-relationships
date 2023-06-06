@@ -4,7 +4,7 @@ const { Country } = require('../models/Country.js');
 
 const countryController = {
     getAll: (req, res) => {
-
+        
         Country.find()
             .then(data => {
                 res.json(data);

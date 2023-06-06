@@ -5,12 +5,16 @@ const bookController = {
     getAll: (req, res) => {
         // let limitProduct = req.query.limit;
         Book.find()
-            .populate("writer")
-            // .select("name unitPrice stock")
-            .then(data => {
+        .populate({
+            path: "writer",
+            populate: {
+              path: "country",
+            },
+          })
+        .then(data => {
                 res.json(data)
             })
-            .catch(err => {
+         .catch(err => {
                 res.status(500).json(err)
             })
     },
@@ -34,7 +38,7 @@ const bookController = {
         let book = new Book({
             name: req.body.name,
             description: req.body.description,
-            publishDate: req.body.publishDate,publishDate
+            publishDate: req.body.publishDate,
             // imagePath:
             writer: req.body.writer,
             addDate: req.body.addDate,
